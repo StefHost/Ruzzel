@@ -23,6 +23,8 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
     public Bitmap[] bitmap_animatie_1 = new Bitmap[11];
     public Bitmap[] bitmap_animatie_2 = new Bitmap[11];
+    public Bitmap[] bitmap_animatie_3 = new Bitmap[11];
+    public Bitmap[] bitmap_animatie_4 = new Bitmap[11];
 
     int winscore = 0;
     int score = 0;
@@ -103,7 +105,32 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             bitmap_animatie_2[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
             bitmap_animatie_2[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
 
-        }else{
+            bitmap_animatie_3[0] = BitmapFactory.decodeResource(getResources(), R.mipmap.muur);
+            bitmap_animatie_3[1] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer);
+            bitmap_animatie_3[2] = BitmapFactory.decodeResource(getResources(), R.mipmap.blok);
+            bitmap_animatie_3[3] = BitmapFactory.decodeResource(getResources(), R.mipmap.animatie_1);
+            bitmap_animatie_3[4] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_blok);
+            bitmap_animatie_3[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_dicht);
+            bitmap_animatie_3[6] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_1);
+            bitmap_animatie_3[7] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_2);
+            bitmap_animatie_3[8] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_3);
+            bitmap_animatie_3[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
+            bitmap_animatie_3[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
+
+            bitmap_animatie_4[0] = BitmapFactory.decodeResource(getResources(), R.mipmap.muur);
+            bitmap_animatie_4[1] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer);
+            bitmap_animatie_4[2] = BitmapFactory.decodeResource(getResources(), R.mipmap.blok);
+            bitmap_animatie_4[3] = BitmapFactory.decodeResource(getResources(), R.mipmap.animatie_2);
+            bitmap_animatie_4[4] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_blok);
+            bitmap_animatie_4[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_dicht);
+            bitmap_animatie_4[6] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_1);
+            bitmap_animatie_4[7] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_2);
+            bitmap_animatie_4[8] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_3);
+            bitmap_animatie_4[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
+            bitmap_animatie_4[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
+
+        }
+        /*else{
             bitmap_animatie_1[0] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/muur.png");
             bitmap_animatie_1[1] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/vloer.png");
             bitmap_animatie_1[2] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/blok.png");
@@ -127,7 +154,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             bitmap_animatie_2[8] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/vloer_kapot_3.png");
             bitmap_animatie_2[9] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/vloer_weg.png");
             bitmap_animatie_2[10] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/val_2.png");
-        }
+        }*/
 
         breedte_plaatje = bitmap_animatie_1[0].getWidth();
 
@@ -237,9 +264,9 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             while (tellen_x < breedte_spel) {
                 if (speelveld.get(tellen) != 0){
                     if (animatie_status.equals("1")) {
-                        canvas.drawBitmap(bitmap_animatie_1[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
+                        canvas.drawBitmap(bitmap_animatie_3[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
                     }else{
-                        canvas.drawBitmap(bitmap_animatie_2[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
+                        canvas.drawBitmap(bitmap_animatie_4[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
                     }
                 }
                 tellen++;
