@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/achtergrond">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!--<TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/knop_blauw"
+            android:text="@string/workshop_1"/>-->
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:padding="15dp"
+            android:background="@android:drawable/edit_text"
+            android:maxLength="6"
+            android:hint="@string/workshop_1"
+            android:cursorVisible="true"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/knop_blauw"
+            android:textColor="#ffffff"
+            android:soundEffectsEnabled="false"
+            android:text="@string/workshop_2"
+            android:onClick="button1" />
+
+        <Button
+            android:id="@+id/button_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/knop_blauw"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            android:soundEffectsEnabled="false"
+            android:text="CAMERA"
+            android:onClick="camera" />
+
+        <!--
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="40dp"
+            android:padding="15dp"
+            android:background="@android:drawable/edit_text"
+            android:hint="@string/workshop_3"
+            android:cursorVisible="true"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/knop_blauw"
+            android:textColor="#ffffff"
+            android:soundEffectsEnabled="false"
+            android:text="@string/workshop_4"
+            android:onClick="button2" />
+            -->
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#c3000000"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:padding="5dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/knop_blauw" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="20dp"
+            android:padding="50dp"
+            android:layout_below="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="20dp"
+            android:layout_below="@+id/textView" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/imageView"
+            android:background="@drawable/knop_blauw"
+            android:textColor="#ffffff"
+            android:soundEffectsEnabled="false"
+            android:text="@string/workshop_5"
+            android:onClick="button3" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

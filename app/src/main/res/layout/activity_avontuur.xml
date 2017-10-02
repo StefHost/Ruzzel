@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/achtergrond"
+    android:gravity="center">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:padding="20dp"
+        android:background="@drawable/knop_groen"
+        android:textColor="#ffffff"
+        android:text="@string/beginscherm_1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="1"
+            android:tag="1"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="2"
+            android:tag="2"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="3"
+            android:tag="3"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="4"
+            android:tag="4"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="5"
+            android:tag="5"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="6"
+            android:tag="6"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="7"
+            android:tag="7"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="8"
+            android:tag="8"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="9"
+            android:tag="9"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout3"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="10"
+            android:tag="10"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/achtergrond">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textColor="#ffffff"
+            android:padding="10dp"
+            android:background="@drawable/knop_rood"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:gravity="center"
+            android:text="@string/app_name"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:contentDescription="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/speler_1_groot" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:padding="20dp"
+            android:background="@drawable/knop_groen"
+            android:textColor="#ffffff"
+            android:text="@string/beginscherm_1"
+            android:soundEffectsEnabled="false"
+            android:onClick="avontuur" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:padding="20dp"
+            android:background="@drawable/knop_blauw"
+            android:textColor="#ffffff"
+            android:text="@string/beginscherm_2"
+            android:soundEffectsEnabled="false"
+            android:onClick="workshop" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:contentDescription="@+id/imageView1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/volume_aan"
+        android:clickable="true"
+        android:onClick="geluid_aan_uit"
+        android:soundEffectsEnabled="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
