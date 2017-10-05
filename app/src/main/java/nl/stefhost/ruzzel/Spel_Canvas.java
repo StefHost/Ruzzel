@@ -59,6 +59,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
     String animatie_status = "1";
 
     // Test vanaf PC !
+    // Test terug vanaf Laptop!
 
     public Spel_Canvas(Context context, AttributeSet attributeSet){
         super(context, attributeSet);
