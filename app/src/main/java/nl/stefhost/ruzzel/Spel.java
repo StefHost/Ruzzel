@@ -27,8 +27,12 @@ public class Spel extends AppCompatActivity {
         setContentView(R.layout.activity_spel);
     }
 
-    public void test(View view){
-        Beginscherm.trillen(1000);
+    public void animatie_aan(View view){
+        Spel_Canvas.animatie_aan();
+    }
+
+    public void animatie_uit(View view){
+        Spel_Canvas.animatie_uit();
     }
 
 }

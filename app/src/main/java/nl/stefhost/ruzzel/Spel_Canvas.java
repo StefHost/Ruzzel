@@ -21,10 +21,8 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
     public Paint paint1 = new Paint();
     public Paint paint2 = new Paint();
 
-    public Bitmap[] bitmap_animatie_1 = new Bitmap[11];
-    public Bitmap[] bitmap_animatie_2 = new Bitmap[11];
-    public Bitmap[] bitmap_animatie_3 = new Bitmap[11];
-    public Bitmap[] bitmap_animatie_4 = new Bitmap[11];
+    public static Bitmap[] bitmap_animatie_1 = new Bitmap[11];
+    public static Bitmap[] bitmap_animatie_2 = new Bitmap[11];
 
     int winscore = 0;
     int score = 0;
@@ -55,14 +53,19 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
     boolean deur_open = false;
     boolean game_loop = true;
+    static boolean onkwetsbaar = false;
 
     String animatie_status = "1";
+
+    public static Context Context;
 
     // Test vanaf PC !
     // Test terug vanaf Laptop!
 
-    public Spel_Canvas(Context context, AttributeSet attributeSet){
+    public Spel_Canvas(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
+
+        Context = context;
 
         Log.d("SHG", "test");
 
@@ -108,30 +111,6 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             bitmap_animatie_2[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
             bitmap_animatie_2[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
 
-            bitmap_animatie_3[0] = BitmapFactory.decodeResource(getResources(), R.mipmap.muur);
-            bitmap_animatie_3[1] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer);
-            bitmap_animatie_3[2] = BitmapFactory.decodeResource(getResources(), R.mipmap.blok);
-            bitmap_animatie_3[3] = BitmapFactory.decodeResource(getResources(), R.mipmap.animatie_1);
-            bitmap_animatie_3[4] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_blok);
-            bitmap_animatie_3[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_dicht);
-            bitmap_animatie_3[6] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_1);
-            bitmap_animatie_3[7] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_2);
-            bitmap_animatie_3[8] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_3);
-            bitmap_animatie_3[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
-            bitmap_animatie_3[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
-
-            bitmap_animatie_4[0] = BitmapFactory.decodeResource(getResources(), R.mipmap.muur);
-            bitmap_animatie_4[1] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer);
-            bitmap_animatie_4[2] = BitmapFactory.decodeResource(getResources(), R.mipmap.blok);
-            bitmap_animatie_4[3] = BitmapFactory.decodeResource(getResources(), R.mipmap.animatie_2);
-            bitmap_animatie_4[4] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_blok);
-            bitmap_animatie_4[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_dicht);
-            bitmap_animatie_4[6] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_1);
-            bitmap_animatie_4[7] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_2);
-            bitmap_animatie_4[8] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_kapot_3);
-            bitmap_animatie_4[9] = BitmapFactory.decodeResource(getResources(), R.mipmap.vloer_weg);
-            bitmap_animatie_4[10] = BitmapFactory.decodeResource(getResources(), R.mipmap.val_2);
-
         }
         /*else{
             bitmap_animatie_1[0] = BitmapFactory.decodeFile("/storage/emulated/0/Pixelmaker/muur.png");
@@ -169,29 +148,29 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         StringTokenizer stringTokenizer2 = new StringTokenizer(spel_7, ",");
 
         achtergrond = new ArrayList<>();
-        while (stringTokenizer1.hasMoreTokens()){
+        while (stringTokenizer1.hasMoreTokens()) {
             String string = stringTokenizer1.nextToken();
-            if (string.equals("4")){
+            if (string.equals("4")) {
                 winscore++;
             }
             achtergrond.add(Integer.parseInt(string));
         }
 
         speelveld = new ArrayList<>();
-        while (stringTokenizer2.hasMoreTokens()){
+        while (stringTokenizer2.hasMoreTokens()) {
             String string = stringTokenizer2.nextToken();
             speelveld.add(Integer.parseInt(string));
         }
 
-        Log.d("SHG", "aantal:"+score);
+        Log.d("SHG", "aantal:" + score);
 
         // code leeggooien
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("code", "");
         editor.apply();
 
-        if (spel_3.equals("verticaal")){
-            if (hoogte_spel != 20){
+        if (spel_3.equals("verticaal")) {
+            if (hoogte_spel != 20) {
                 marge_x = 60;
                 marge_y = 200;
             }
@@ -222,7 +201,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
             if (animatie_status.equals("1")) {
                 animatie_status = "2";
-            }else{
+            } else {
                 animatie_status = "1";
             }
             if (game_loop) {
@@ -235,11 +214,11 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         @Override
         public void run() {
 
-            ((Spel)getContext()).finish();
+            ((Spel) getContext()).finish();
         }
     };
 
-    public void onDraw(Canvas canvas){
+    public void onDraw(Canvas canvas) {
 
         //achtergrond tekenen
         while (tellen_y < hoogte_spel) {
@@ -247,7 +226,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             while (tellen_x < breedte_spel) {
                 if (animatie_status.equals("1")) {
                     canvas.drawBitmap(bitmap_animatie_1[achtergrond.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
-                }else{
+                } else {
                     canvas.drawBitmap(bitmap_animatie_2[achtergrond.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
                 }
                 tellen++;
@@ -265,11 +244,11 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         while (tellen_y < hoogte_spel) {
 
             while (tellen_x < breedte_spel) {
-                if (speelveld.get(tellen) != 0){
+                if (speelveld.get(tellen) != 0) {
                     if (animatie_status.equals("1")) {
-                        canvas.drawBitmap(bitmap_animatie_3[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
-                    }else{
-                        canvas.drawBitmap(bitmap_animatie_4[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
+                        canvas.drawBitmap(bitmap_animatie_1[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
+                    } else {
+                        canvas.drawBitmap(bitmap_animatie_2[speelveld.get(tellen)], (tellen_x * breedte_plaatje) + marge_x, (tellen_y * breedte_plaatje) + marge_y, paint1);
                     }
                 }
                 tellen++;
@@ -291,13 +270,13 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
         //Rand tekenen
         paint2.setStrokeWidth(5);
-        canvas.drawLine(marge_x, marge_y, marge_x, marge_y+(breedte_plaatje*hoogte_spel), paint2);
-        canvas.drawLine(marge_x+(breedte_plaatje*breedte_spel), marge_y, marge_x+(breedte_plaatje*breedte_spel), marge_y+(breedte_plaatje*hoogte_spel), paint2);
-        canvas.drawLine(marge_x, marge_y, marge_x+(breedte_plaatje*breedte_spel), marge_y, paint2);
-        canvas.drawLine(marge_x, marge_y+(breedte_plaatje*hoogte_spel), marge_x+(breedte_plaatje*breedte_spel), marge_y+(breedte_plaatje*hoogte_spel), paint2);
+        canvas.drawLine(marge_x, marge_y, marge_x, marge_y + (breedte_plaatje * hoogte_spel), paint2);
+        canvas.drawLine(marge_x + (breedte_plaatje * breedte_spel), marge_y, marge_x + (breedte_plaatje * breedte_spel), marge_y + (breedte_plaatje * hoogte_spel), paint2);
+        canvas.drawLine(marge_x, marge_y, marge_x + (breedte_plaatje * breedte_spel), marge_y, paint2);
+        canvas.drawLine(marge_x, marge_y + (breedte_plaatje * hoogte_spel), marge_x + (breedte_plaatje * breedte_spel), marge_y + (breedte_plaatje * hoogte_spel), paint2);
 
         //Zoeken naar val
-        if (achtergrond.get(positie_speler-1) == 10 && animatie_status.equals("2")){
+        if (achtergrond.get(positie_speler - 1) == 10 && animatie_status.equals("2") && !onkwetsbaar) {
             game_loop = false;
             Beginscherm.gewonnen_effect();
             Beginscherm.trillen(1000);
@@ -305,7 +284,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         }
 
         //Zoeken naar gat in grond
-        if (achtergrond.get(positie_speler-1) == 9){
+        if (achtergrond.get(positie_speler - 1) == 9) {
             game_loop = false;
             Beginscherm.gewonnen_effect();
             Beginscherm.trillen(1000);
@@ -325,9 +304,9 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
     double y_up;
 
     @Override
-    public boolean onTouchEvent (MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
 
-        if (event.getAction() == MotionEvent.ACTION_DOWN){
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             int pointerId = event.getPointerId(0);
             int pointerIndex = event.findPointerIndex(pointerId);
             x_down = event.getX(pointerIndex);
@@ -336,7 +315,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             //Log.d("Ruzzel", "x_down: "+x_down+" | y_down: "+y_down);
         }
 
-        if (event.getAction() == MotionEvent.ACTION_UP){
+        if (event.getAction() == MotionEvent.ACTION_UP) {
             int pointerId = event.getPointerId(0);
             int pointerIndex = event.findPointerIndex(pointerId);
             x_up = event.getX(pointerIndex);
@@ -344,18 +323,18 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
             //Log.d("Ruzzel", "x_up: "+x_up+" | y_up: "+y_up);
 
-            if ( ((y_up - y_down > x_up - x_down) && (y_up - y_down > x_down - x_up)) || ((y_down - y_up > x_up - x_down) && (y_down - y_up > x_down - x_up)) ){
+            if (((y_up - y_down > x_up - x_down) && (y_up - y_down > x_down - x_up)) || ((y_down - y_up > x_up - x_down) && (y_down - y_up > x_down - x_up))) {
                 //Log.d("Ruzzel", "swipe verticaal");
-                if (y_up > y_down){
+                if (y_up > y_down) {
                     beweeg("omlaag");
-                }else if (y_down > y_up){
+                } else if (y_down > y_up) {
                     beweeg("omhoog");
                 }
-            }else{
+            } else {
                 //Log.d("Ruzzel", "swipe horizontaal");
-                if (x_up > x_down){
+                if (x_up > x_down) {
                     beweeg("rechts");
-                }else if (x_down > x_up){
+                } else if (x_down > x_up) {
                     beweeg("links");
                 }
             }
@@ -368,18 +347,18 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
     int nieuwe_positie;
     int nieuwe_positie_blok;
 
-    public void beweeg (String keuze){
+    public void beweeg(String keuze) {
 
         int breedte;
 
-        switch (keuze){
+        switch (keuze) {
             case "rechts":
-                nieuwe_positie = positie_speler +1;
+                nieuwe_positie = positie_speler + 1;
                 nieuwe_positie_blok = nieuwe_positie;
                 break;
             case "links":
-                nieuwe_positie = positie_speler -1;
-                nieuwe_positie_blok = nieuwe_positie -2;
+                nieuwe_positie = positie_speler - 1;
+                nieuwe_positie_blok = nieuwe_positie - 2;
                 break;
             case "omhoog":
                 breedte = breedte_spel + 1;
@@ -393,15 +372,15 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
                 break;
 
         }
-        Log.d("SHG", ""+speelveld.get(nieuwe_positie-1));
+        Log.d("SHG", "" + speelveld.get(nieuwe_positie - 1));
 
         // Gewonnen
-        if (achtergrond.get(nieuwe_positie-1) == 5){
+        if (achtergrond.get(nieuwe_positie - 1) == 5) {
 
-            if (deur_open){
+            if (deur_open) {
                 Log.d("SHG", "gewonnen");
-                speelveld.set(positie_speler-1, 0);
-                speelveld.set(nieuwe_positie-1, 3);
+                speelveld.set(positie_speler - 1, 0);
+                speelveld.set(nieuwe_positie - 1, 3);
                 positie_speler = nieuwe_positie;
 
                 SharedPreferences sharedPreferences = this.getContext().getSharedPreferences("opties", 0);
@@ -420,19 +399,19 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             }
 
             // Grond kapot
-        }else if (achtergrond.get(nieuwe_positie-1) == 6 || achtergrond.get(nieuwe_positie-1) == 7 || achtergrond.get(nieuwe_positie-1) == 8) {
+        } else if (achtergrond.get(nieuwe_positie - 1) == 6 || achtergrond.get(nieuwe_positie - 1) == 7 || achtergrond.get(nieuwe_positie - 1) == 8) {
 
-            if (speelveld.get(nieuwe_positie-1) == 2){
+            if (speelveld.get(nieuwe_positie - 1) == 2) {
                 speelveld.set(nieuwe_positie_blok, 2);
             }
 
-            speelveld.set(positie_speler-1, 0);
-            speelveld.set(nieuwe_positie-1, 3);
-            achtergrond.set(nieuwe_positie-1, achtergrond.get(nieuwe_positie-1)+1);
+            speelveld.set(positie_speler - 1, 0);
+            speelveld.set(nieuwe_positie - 1, 3);
+            achtergrond.set(nieuwe_positie - 1, achtergrond.get(nieuwe_positie - 1) + 1);
             positie_speler = nieuwe_positie;
 
             // Geen grond
-        //}else if (achtergrond.get(nieuwe_positie-1) == 9) {
+            //}else if (achtergrond.get(nieuwe_positie-1) == 9) {
 
             /*speelveld.set(positie_speler-1, 0);
             speelveld.set(nieuwe_positie-1, 3);
@@ -441,15 +420,15 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             Beginscherm.gewonnen_effect();
             handler2.postDelayed(stoppen, 1000);*/
 
-        }else if (achtergrond.get(nieuwe_positie-1) == 0) {
+        } else if (achtergrond.get(nieuwe_positie - 1) == 0) {
             // geen muur
             Beginscherm.trillen(100);
 
-        }else{
+        } else {
             // geen muur
 
             // blok obstakel
-            if (speelveld.get(nieuwe_positie-1) == 2) {
+            if (speelveld.get(nieuwe_positie - 1) == 2) {
                 if (speelveld.get(nieuwe_positie_blok) == 0 && achtergrond.get(nieuwe_positie_blok) != 0) {
 
                     if (achtergrond.get(nieuwe_positie_blok) == 9 && achtergrond.get(nieuwe_positie_blok) != 0) {
@@ -457,7 +436,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
                         speelveld.set(nieuwe_positie - 1, 3);
                         speelveld.set(positie_speler - 1, 0);
                         positie_speler = nieuwe_positie;
-                    }else{
+                    } else {
                         speelveld.set(nieuwe_positie_blok, 2);
                         speelveld.set(nieuwe_positie - 1, 3);
                         speelveld.set(positie_speler - 1, 0);
@@ -466,7 +445,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
                 }
 
-            }else{
+            } else {
                 // geen obstakels
                 speelveld.set(nieuwe_positie - 1, 3);
                 speelveld.set(positie_speler - 1, 0);
@@ -480,7 +459,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         for (int i = 0; i < achtergrond.size(); i++) {
             int vakje_achtergrond = achtergrond.get(i);
             int vakje_speelveld = speelveld.get(i);
-            if (vakje_achtergrond == 4 && vakje_speelveld == 2){
+            if (vakje_achtergrond == 4 && vakje_speelveld == 2) {
                 score++;
                 if (score_geluid < score) {
                     Beginscherm.block_effect();
@@ -488,7 +467,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
                 }
             }
             // Deur openen
-            if (score == winscore && !deur_open){
+            if (score == winscore && !deur_open) {
                 deur_open = true;
                 bitmap_animatie_1[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_open);
                 bitmap_animatie_2[5] = BitmapFactory.decodeResource(getResources(), R.mipmap.deur_open);
@@ -496,6 +475,16 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             }
         }
 
+    }
+
+    public static void animatie_aan() {
+        bitmap_animatie_1[3] = BitmapFactory.decodeResource(Context.getResources(), R.mipmap.animatie_1);
+        onkwetsbaar = true;
+    }
+
+    public static void animatie_uit() {
+        bitmap_animatie_1[3] = BitmapFactory.decodeResource(Context.getResources(), R.mipmap.speler_1);
+        onkwetsbaar = false;
     }
 
 }

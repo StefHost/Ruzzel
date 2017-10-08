@@ -11,17 +11,33 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="#ffffff"
         android:gravity="center"
         android:padding="10dp"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/knop_groen"
-        android:text="TEST"
-        android:onClick="test"
+        android:text="onkwetsbaar aan"
+        android:onClick="animatie_aan"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textView1"
+        android:background="@drawable/knop_groen"
+        android:text="onkwetsbaar uit"
+        android:onClick="animatie_uit"
         android:visibility="visible" />
 
 </RelativeLayout>
