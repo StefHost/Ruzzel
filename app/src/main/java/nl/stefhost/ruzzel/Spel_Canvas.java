@@ -284,7 +284,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         }
 
         //Zoeken naar gat in grond
-        if (achtergrond.get(positie_speler - 1) == 9) {
+        if (achtergrond.get(positie_speler - 1) == 9 && !onkwetsbaar) {
             game_loop = false;
             Beginscherm.gewonnen_effect();
             Beginscherm.trillen(1000);
