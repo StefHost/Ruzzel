@@ -175,6 +175,18 @@
             android:soundEffectsEnabled="false"
             android:onClick="button" />
 
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@mipmap/vloer"
+            android:textSize="20sp"
+            android:text="DEBUG"
+            android:tag="debug"
+            android:soundEffectsEnabled="false"
+            android:onClick="button" />
+
     </LinearLayout>
 
 </RelativeLayout>

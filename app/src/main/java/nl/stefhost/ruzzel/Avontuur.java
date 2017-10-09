@@ -127,9 +127,37 @@ public class Avontuur extends AppCompatActivity {
     public void button(View view){
         String tag = view.getTag().toString();
 
-        if (wereld_levels.equals("wereld")){
+        if (wereld_levels.equals("wereld")) {
             keuze_wereld = Integer.parseInt(tag);
             levels();
+        }else if (tag.equals("debug")){
+
+            String level = "10|10|verticaal|73|89|0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,1,4,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1,0,1,6,1,9,1,1,1,1,1,0,1,1,1,1,1,10,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,5,0,0,0,0,0,0,0,0,0,0,0|0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+
+            StringTokenizer stringTokenizer = new StringTokenizer(level, "|");
+            String spel_1 = stringTokenizer.nextToken();
+            String spel_2 = stringTokenizer.nextToken();
+            String spel_3 = stringTokenizer.nextToken();
+            String spel_4 = stringTokenizer.nextToken();
+            String spel_5 = stringTokenizer.nextToken();
+            String spel_6 = stringTokenizer.nextToken();
+            String spel_7 = stringTokenizer.nextToken();
+
+            SharedPreferences sharedPreferences = getSharedPreferences("opties", 0);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            //editor.putInt("gekozen_level", gekozen_level);
+            editor.putString("spel_1", spel_1);
+            editor.putString("spel_2", spel_2);
+            editor.putString("spel_3", spel_3);
+            editor.putString("spel_4", spel_4);
+            editor.putString("spel_5", spel_5);
+            editor.putString("spel_6", spel_6);
+            editor.putString("spel_7", spel_7);
+            editor.apply();
+
+            Intent intent = new Intent(this, Spel.class);
+            startActivity(intent);
+
         }else{
             // Level starten
             int gekozen_level = (keuze_wereld - 1) * 10 +Integer.parseInt(tag);

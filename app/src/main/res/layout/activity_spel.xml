@@ -24,7 +24,7 @@
         android:onClick="animatie_aan"
         android:visibility="visible" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,6 +38,6 @@
         android:background="@drawable/knop_groen"
         android:text="onkwetsbaar uit"
         android:onClick="animatie_uit"
-        android:visibility="visible" />
+        android:visibility="visible" />-->
 
 </RelativeLayout>

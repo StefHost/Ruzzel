@@ -53,7 +53,9 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
     boolean deur_open = false;
     boolean game_loop = true;
+
     static boolean onkwetsbaar = false;
+    static int onkwetsbaar_tijd = 0;
 
     String animatie_status = "1";
 
@@ -191,7 +193,16 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             fps = aantal_fps;
             aantal_fps = 0;
 
-            handler1.postDelayed(fps_tellen, 1000);
+            if (onkwetsbaar){
+                onkwetsbaar_tijd--;
+                if (onkwetsbaar_tijd == 0) {
+                    animatie_uit();
+                }
+            }
+
+            if (game_loop) {
+                handler1.postDelayed(fps_tellen, 1000);
+            }
         }
     };
 
@@ -263,7 +274,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
         tellen = 0;
 
         //FPS tekenen
-        //canvas.drawText("FPS: "+fps, 0, 40, paint1);
+        canvas.drawText("FPS: "+fps, 0, 40, paint1);
 
         //Score tekenen
         //canvas.drawText("Score: "+score+"/"+winscore, 0, 80, paint1);
@@ -479,6 +490,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
 
     public static void animatie_aan() {
         bitmap_animatie_1[3] = BitmapFactory.decodeResource(Context.getResources(), R.mipmap.animatie_1);
+        onkwetsbaar_tijd = 5;
         onkwetsbaar = true;
     }
 

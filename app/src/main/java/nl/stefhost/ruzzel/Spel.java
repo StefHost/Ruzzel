@@ -29,6 +29,7 @@ public class Spel extends AppCompatActivity {
 
     public void animatie_aan(View view){
         Spel_Canvas.animatie_aan();
+        view.setVisibility(View.GONE);
     }
 
     public void animatie_uit(View view){
