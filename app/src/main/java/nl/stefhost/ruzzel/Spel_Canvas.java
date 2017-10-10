@@ -52,7 +52,7 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
     public Handler handler3;
 
     boolean deur_open = false;
-    boolean game_loop = true;
+    static boolean game_loop = true;
 
     static boolean onkwetsbaar = false;
     static int onkwetsbaar_tijd = 0;
@@ -203,6 +203,8 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             if (game_loop) {
                 handler1.postDelayed(fps_tellen, 1000);
             }
+
+            //Log.d("Ruzzel", "fps_tellen");
         }
     };
 
@@ -218,6 +220,8 @@ public class Spel_Canvas extends android.support.v7.widget.AppCompatImageView {
             if (game_loop) {
                 handler2.postDelayed(animatie_switch, 500);
             }
+
+            //Log.d("Ruzzel", "animatie_switch");
         }
     };
 

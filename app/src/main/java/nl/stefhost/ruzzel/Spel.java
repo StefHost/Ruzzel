@@ -25,6 +25,13 @@ public class Spel extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_spel);
+        Spel_Canvas.game_loop = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Spel_Canvas.game_loop = false;
     }
 
     public void animatie_aan(View view){
